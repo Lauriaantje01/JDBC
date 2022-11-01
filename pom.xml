@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>demo1-startJDBC</module>
+        <module>demo10-start-with-jpa</module>
     </modules>
 
     <properties>
@@ -20,6 +21,8 @@
         <latest.jdbc.postrgres.driver>42.2.24</latest.jdbc.postrgres.driver>
         <latest.junit.version>5.8.2</latest.junit.version>
         <latest.assertj-core>3.22.0</latest.assertj-core>
+        <latest.hibernate.version>x.y.z.Final</latest.hibernate.version>
+        <latest.log4j.version>v.w.x</latest.log4j.version>
     </properties>
 
     <dependencyManagement>
@@ -40,6 +43,21 @@
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
                 <version>${latest.assertj-core}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${latest.hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${latest.hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${latest.log4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
