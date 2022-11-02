@@ -22,7 +22,7 @@ void showThatTheConnectionToPostgresIsNotNull() throws SQLException {
 }
 
 @Test
-    @Order(2)
+    @Order(3)
     void createTable() throws SQLException {
     Connection connection = createConnection();
     Statement statement = connection.createStatement();
@@ -30,14 +30,15 @@ void showThatTheConnectionToPostgresIsNotNull() throws SQLException {
             "(ID SERIAL PRIMARY KEY     NOT NULL," +
             " NAME       TEXT    NOT NULL, " +
             " AGE        INT     NOT NULL, " +
-            " COUNTRY   CHAR(50) CONSTRAINT country_name_must_be_different UNIQUE "  + ")";
+            " COUNTRY   CHAR(50) CONSTRAINT country_name_must_be_different UNIQUE"  + ")";
     int executeUpdate = statement.executeUpdate(sql);
     assertThat(executeUpdate).isEqualTo(0);
 
 //    Note the create Table syntax (sql)
-//    The SERIAL type => auto-incrementing integer, is funcitonality often seen in databases
+//    The SERIAL type => auto-incrementing integer, is functionality often seen in databases
 //    The executedUpdate(sql) statement should return a 0 (number zero) when a statement is executed that
 //    that does not explicitly return something.
+//
 }
 
 @Test
@@ -63,7 +64,7 @@ void insertRows() throws SQLException {
         assertThat(numberOfRowsInserted).isEqualTo(2);
 
         sql = "INSERT INTO Cursist (NAME, AGE, COUNTRY) " +
-                "VALUES('Johan', 43, 'Belgie') RETURNING*;";
+                "VALUES('Johan', 43, 'Nederland') RETURNING*;";
 
         ResultSet rs = statement.executeQuery(sql);
         rs.next();
