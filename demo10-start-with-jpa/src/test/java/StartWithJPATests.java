@@ -1,10 +1,9 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,15 +50,15 @@ public class StartWithJPATests {
         addFavouriteBooks(em);
 
         String queryString = "SELECT b FROM Book b WHERE b.author = 'Tonke Dragt'";
-        var jpqlQuery= em.createQuery(queryString, Book.class);
-        var book = jpqlQuery.getSingleResult();
+        TypedQuery<Book> jpqlQuery= em.createQuery(queryString, Book.class);
+        Book book = jpqlQuery.getSingleResult();
         System.out.println("Favourite book is: " + book.getAuthor() + " " + book.getTitle());
 
     }
 
     @Test
     @DisplayName("Jpql query testjes")
-    void jpqlTestjes(){
+    void jpqlTestjes() {
         String persistenceUnitName = "jpa-hiber-postgres-pu";
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
         EntityManager em = emf.createEntityManager();
@@ -67,7 +66,7 @@ public class StartWithJPATests {
         addFavouriteBooks(em);
 
         String queryString = "SELECT b FROM Book b WHERE b.author like '%a%'";
-        var jpqlQuery= em.createQuery(queryString, Book.class);
+        var jpqlQuery = em.createQuery(queryString, Book.class);
         var books = jpqlQuery.getResultList();
         System.out.println("Books with author name containing a: ");
         for (Book b : books) {
@@ -75,11 +74,27 @@ public class StartWithJPATests {
         }
 
         String queryString2 = "SELECT b FROM Book b WHERE length(b.title) <10";
-        var jpqlQuery2= em.createQuery(queryString2, Book.class);
+        var jpqlQuery2 = em.createQuery(queryString2, Book.class);
         var books2 = jpqlQuery2.getResultList();
         System.out.println("Books with titles less than 10 characters: ");
         for (Book b : books2) {
             System.out.println(b.getTitle() + " by " + b.getAuthor());
+        }
+    }
+
+    @Test
+    void testSelectTitleOnly() {
+        String persistenceUnitName = "jpa-hiber-postgres-pu";
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
+        EntityManager em = emf.createEntityManager();
+
+        addFavouriteBooks(em);
+        String queryString3 = "SELECT b.title FROM Book b";
+        TypedQuery<String> jpqlQuery3= em.createQuery(queryString3, String.class);
+        var books3 = jpqlQuery3.getResultList();
+        System.out.println("Book titles:");
+        for (String title : books3) {
+            System.out.println(title);
         }
 
     }

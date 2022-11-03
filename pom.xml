@@ -11,6 +11,7 @@
     <modules>
         <module>demo1-startJDBC</module>
         <module>demo10-start-with-jpa</module>
+        <module>demo14-type-conversion</module>
     </modules>
 
     <properties>
