@@ -10,7 +10,6 @@ public class Title {
 
     public Title() {
         setName("Unknown");
-        setId(null);
     }
 
     public Set<Author> getAuthors() {
@@ -33,12 +32,12 @@ public class Title {
         setName(name);
     }
 
-    public void addAuthor(Author author) {
-        authors.add(author);
-        if (author.getTitles() !null && !author.getTitles().contains(this)){
-            author.getTitles().add(this);
-        };
-    }
+//    public void addAuthor(Author author) {
+//        authors.add(author);
+//        if (author.getTitles() !=null && !author.getTitles().contains(this)){
+//            author.getTitles().add(this);
+//        };
+//    }
 
     public String getName() {
         return name;

@@ -25,14 +25,21 @@ public class manyToManyTests {
     }
 
     @Test
-    void testDelete() {
+    void testDataToevoegen() {
+        new Title("Zeeen van Tijd"));
+        new Title("Norwegian Wood"));
+        new Title("Catch 22"));
+        new Author("Tonke Dragt"));
+        new Author("Murakami"));
+        new Author("Heller");
+
         executeTransaction(em -> {
-            em.persist(new Title("Zeeen van Tijd"));
-            em.persist(new Title("Norwegian Wood"));
-            em.persist(new Title("Catch 22"));
-            em.persist(new Author("Tonke Dragt"));
-            em.persist(new Author("Murakami"));
-            em.persist(new Author("Heller"));
+            em.persist();
+            em.persist();
+            em.persist();
+            em.persist();
+            em.persist();
+            em.persist();
             Title title = em.find(Title.class, 3L);
             Author author = title.getAuthors().iterator().next();
             title.getAuthors().remove(author);

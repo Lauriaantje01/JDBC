@@ -10,14 +10,19 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private Set<Title> titles = new HashSet<>();
+
+//    public Set<Title> getTitles() {
+//        return titles;
+//    }
+//
+//    @OneToMany
+//    private Set<Title> titles = new HashSet<>();
 
     public Author(String name) {
         setName(name);
     }
 
     public Author() {
-        setId(null);
         setName("Unknown");
     }
 
@@ -28,9 +33,6 @@ public class Author {
     public void setName(String name) {
         this.name = name;
     }
-
-
-
 
 
     public Long getId() {
