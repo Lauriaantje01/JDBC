@@ -13,6 +13,7 @@
         <module>demo10-start-with-jpa</module>
         <module>demo9-type-conversion</module>
         <module>demo14Many-to-Many</module>
+        <module>demo19-queries</module>
     </modules>
 
     <properties>
@@ -25,6 +26,8 @@
         <latest.assertj-core>3.22.0</latest.assertj-core>
         <latest.hibernate.version>5.6.12.Final</latest.hibernate.version>
         <latest.log4j.version>2.19.0</latest.log4j.version>
+        <db.name>pubs</db.name>
+        <db.password>PaSSw0rd</db.password>
     </properties>
 
     <dependencyManagement>

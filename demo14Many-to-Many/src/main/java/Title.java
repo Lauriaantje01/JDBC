@@ -4,7 +4,8 @@ import java.util.*;
 @Entity
 public class Title {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "title_id")
+    @SequenceGenerator(sequenceName = "title_id", name = "title_id")
     private Long id;
     private String name;
 
@@ -21,11 +22,11 @@ public class Title {
     }
 
     @ManyToMany
-    @JoinTable(
-            name = "tile_author_mm_uni",
-            joinColumns = {@JoinColumn(name = "title_id")},
-            inverseJoinColumns = {@JoinColumn(name = "author_id")}
-    )
+//    @JoinTable(
+//            name = "tile_author_mm_uni",
+//            joinColumns = {@JoinColumn(name = "title_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "author_id")}
+//    )
     private Set<Author> authors = new HashSet<>();
 
     public Title(String name) {
