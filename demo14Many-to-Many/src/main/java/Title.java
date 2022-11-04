@@ -32,12 +32,15 @@ public class Title {
         setName(name);
     }
 
-//    public void addAuthor(Author author) {
+    //    public void addAuthor(Author author) {
 //        authors.add(author);
 //        if (author.getTitles() !=null && !author.getTitles().contains(this)){
 //            author.getTitles().add(this);
 //        };
 //    }
+    public void addAuthor(Author author) {
+        authors.add(author);
+    }
 
     public String getName() {
         return name;
