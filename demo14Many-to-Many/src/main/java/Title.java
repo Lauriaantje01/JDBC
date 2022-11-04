@@ -40,6 +40,7 @@ public class Title {
 //    }
     public void addAuthor(Author author) {
         authors.add(author);
+        author.setTitle((this));
     }
 
     public String getName() {

@@ -11,12 +11,15 @@ public class Author {
     private Long id;
     private String name;
 
-//    public Set<Title> getTitles() {
-//        return titles;
-//    }
-//
-//    @OneToMany
-//    private Set<Title> titles = new HashSet<>();
+
+    @ManyToMany (mappedBy = "authors")
+    private Set<Title> titles = new HashSet<>();
+    public void setTitle(Title title) {
+        titles.add(title);
+    }
+    public Set<Title> getTitles() {
+        return titles;
+    }
 
     public Author(String name) {
         setName(name);
