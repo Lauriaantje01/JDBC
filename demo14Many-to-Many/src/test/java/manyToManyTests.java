@@ -28,14 +28,18 @@ public class manyToManyTests {
     void testDataToevoegen() {
         Title title1 = new Title("Zeeen van Tijd");
         Title title2 = new Title("Norwegian Wood");
-        Title title3 =new Title("Catch 22");
+        Title title3 = new Title("Catch 22");
+        Title title4 = new Title("Zevensprong");
         Author author1 = new Author("Tonke Dragt");
         Author author2 = new Author("Murakami");
         Author author3 = new Author("Heller");
 
         title1.addAuthor(author1);
+        title1.addAuthor(author2);
         title2.addAuthor(author2);
         title3.addAuthor(author3);
+        title4.addAuthor(author1);
+
 
         executeTransaction(em -> {
 
@@ -46,6 +50,7 @@ public class manyToManyTests {
             em.persist(title1);
             em.persist(title2);
             em.persist(title3);
+            em.persist(title4);
 //            Title title = em.find(Title.class, 3L);
 //            Author author = title.getAuthors().iterator().next();
 //            title.getAuthors().remove(author);

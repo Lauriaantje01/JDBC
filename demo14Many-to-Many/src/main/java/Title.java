@@ -24,7 +24,7 @@ public class Title {
     @JoinTable(
             name = "tile_author_mm_uni",
             joinColumns = {@JoinColumn(name = "title_id")},
-            inverseJoinColumns = {@JoinColumn(name = "id_title")}
+            inverseJoinColumns = {@JoinColumn(name = "author_id")}
     )
     private Set<Author> authors = new HashSet<>();
 
