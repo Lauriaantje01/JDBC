@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.*;
@@ -21,12 +22,17 @@ public class manyToManyTests {
             }
             throw new RuntimeException("Something went wrong in the test", e);
         }
-
     }
 
     @Test
     void testDelete() {
-        executeTransaction(eM -> {
+        executeTransaction(em -> {
+            em.persist(new Title("Zeeen van Tijd"));
+            em.persist(new Title("Norwegian Wood"));
+            em.persist(new Title("Catch 22"));
+            em.persist(new Author("Tonke Dragt"));
+            em.persist(new Author("Murakami"));
+            em.persist(new Author("Heller"));
             Title title = em.find(Title.class, 3L);
             Author author = title.getAuthors().iterator().next();
             title.getAuthors().remove(author);

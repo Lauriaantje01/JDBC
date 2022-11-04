@@ -8,6 +8,11 @@ public class Title {
     private Long id;
     private String name;
 
+    public Title() {
+        setName("Unknown");
+        setId(null);
+    }
+
     public Set<Author> getAuthors() {
         return authors;
     }
@@ -19,12 +24,21 @@ public class Title {
     @ManyToMany
     @JoinTable(
             name = "tile_author_mm_uni",
-            joinColumns = {@JoinColumn(name="title_id")},
-            inverseJoinColumns = {@JoinColumn(name="id_title")}
+            joinColumns = {@JoinColumn(name = "title_id")},
+            inverseJoinColumns = {@JoinColumn(name = "id_title")}
     )
     private Set<Author> authors = new HashSet<>();
 
+    public Title(String name) {
+        setName(name);
+    }
 
+    public void addAuthor(Author author) {
+        authors.add(author);
+        if (author.getTitles() !null && !author.getTitles().contains(this)){
+            author.getTitles().add(this);
+        };
+    }
 
     public String getName() {
         return name;
@@ -33,6 +47,7 @@ public class Title {
     public void setName(String name) {
         this.name = name;
     }
+
     public Long getId() {
         return id;
     }
