@@ -17,7 +17,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/pubs"/>
             <property name="javax.persistence.jdbc.user" value="cursist"/>
             <property name="javax.persistence.jdbc.password" value="PaSSw0rd"/>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.database.action"  value="create"/>
         </properties>
 
     </persistence-unit>

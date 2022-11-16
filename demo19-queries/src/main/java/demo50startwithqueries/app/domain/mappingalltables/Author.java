@@ -2,7 +2,6 @@ package demo50startwithqueries.app.domain.mappingalltables;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Collection;
 
 @Entity
 public class Author {
@@ -15,7 +14,6 @@ public class Author {
     private String phone;
     private String state;
     private String zip;
-    private Collection<Royalty> royaltiesPerTitle;
 
     @Id
     @GeneratedValue
@@ -54,8 +52,8 @@ public class Author {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastname(String auLname) {
+        this.lastname = auLname;
     }
 
     @Basic
@@ -142,12 +140,18 @@ public class Author {
         return result;
     }
 
-    @OneToMany(mappedBy = "author")
-    public Collection<Royalty> getRoyaltiesPerAuthor() {
-        return royaltiesPerTitle;
-    }
-
-    public void setRoyaltiesPerAuthor(Collection<Royalty> royaltiesPerTitle) {
-        this.royaltiesPerTitle = royaltiesPerTitle;
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", city='" + city + '\'' +
+                ", contract=" + contract +
+                ", phone='" + phone + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                '}';
     }
 }
